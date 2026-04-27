@@ -1,0 +1,79 @@
+﻿<Window x:Class="ConnectronGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConnectronGUI"
+        mc:Ignorable="d"
+        Title="Connectron" Height="470" Width="800">
+    <Grid x:Name="gridFullWindow" Background="#FF72FCFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblTitle" Content="Connectron" FontWeight="Bold" FontSize="24" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="#FF1F33A0" Foreground="White"/>
+        <Grid x:Name="gridContentGameplay" Grid.Row="1" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="gridGameBoard" Background="#FF0077C3" Margin="15,15,15,15"></Grid>
+            <DockPanel x:Name="dockGameUI" Grid.Column="1" LastChildFill="False" Background="#FF4F91DA">
+                <TextBlock x:Name="tblockDescription" TextWrapping="Wrap" Text="In Connectron, players attempt to get a vertical, horizontal or diagonal line of a certain length, by dropping counters into a grid." Width="Auto" DockPanel.Dock="Top" FontWeight="Bold" Margin="15,5,15,15"/>
+                <Label x:Name="lblCurrentPlayer" Content="Current Player:" VerticalAlignment="Top" DockPanel.Dock="Top"/>
+                <Label x:Name="lblWinLength" Content="Winning Line Length:" VerticalAlignment="Top" DockPanel.Dock="Top"/>
+            </DockPanel>
+        </Grid>
+        <Grid x:Name="gridContentStartScreen" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DockPanel x:Name="dockStartControls" LastChildFill="False" Background="#FF4A91DA" Grid.ColumnSpan="2" Margin="0,0,533,0" Grid.RowSpan="2">
+                <Label x:Name="lblGridSettings" DockPanel.Dock="Top" FontWeight="Bold" HorizontalContentAlignment="Center" Content="Setup Game"/>
+                <Label x:Name="lblNumRows" Content="Enter number of rows:" DockPanel.Dock="Top"/>
+                <TextBox x:Name="txtRowsIn" TextWrapping="Wrap" DockPanel.Dock="Top" Margin="3,0,3,0"/>
+                <Label x:Name="lblNumColumns" Content="Enter number of columns:" DockPanel.Dock="Top" Height="25.96"/>
+                <TextBox x:Name="txtColumnsIn" TextWrapping="Wrap" DockPanel.Dock="Top" Height="17.96" Margin="3,0,3,0"/>
+                <Label x:Name="lblWinLengthIn" Content="Enter line length required for win:" DockPanel.Dock="Top" Height="25.96"/>
+                <TextBox x:Name="txtWinLengthIn" TextWrapping="Wrap" DockPanel.Dock="Top" Height="17.96" Margin="3,0,3,0"/>
+                <Label x:Name="lblAddPlayers" Content="Add Players" DockPanel.Dock="Top" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                <Label x:Name="lblPlayerNameIn" Content="Enter player name:" DockPanel.Dock="Top" Height="25.96"/>
+                <TextBox x:Name="txtPlayerNameIn" TextWrapping="Wrap" DockPanel.Dock="Top" Height="17.96"/>
+                <Label x:Name="lblPlayerColor" Content="Set player color:" DockPanel.Dock="Top" Height="25.96"/>
+                <Grid x:Name="gridPlayerColor" DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="lblColorR" Content="Red:"/>
+                    <Label x:Name="lblColorG" Content="Green:" Grid.Row="1"/>
+                    <Label x:Name="lblColorB" Content="Blue:" Grid.Row="2"/>
+                    <Label x:Name="lblColorPreviewText" Content="Preview:" Grid.Row="3" FontStyle="Italic"/>
+                    <Slider x:Name="sldRed" Grid.Column="1" TickFrequency="15" SmallChange="5" LargeChange="15" Maximum="255" TickPlacement="BottomRight" ValueChanged="colorSlider_ValueChanged"/>
+                    <Slider x:Name="sldGreen" Grid.Column="1" TickFrequency="15" SmallChange="5" LargeChange="15" Maximum="255" TickPlacement="BottomRight" Grid.Row="1" ValueChanged="sldGreen_ValueChanged"/>
+                    <Slider x:Name="sldBlue" Grid.Column="1" TickFrequency="15" SmallChange="5" LargeChange="15" Maximum="255" TickPlacement="BottomRight" Grid.Row="2" ValueChanged="sldBlue_ValueChanged"/>
+                    <Label x:Name="lblColorPreview" Grid.Row="3" Grid.Column="1" Margin="3,3,3,3" Background="Black"/>
+                </Grid>
+                <Button x:Name="btnAddPlayer" Content="Add Player" Background="#FFC1EA88" DockPanel.Dock="Top" VerticalContentAlignment="Center" MinHeight="25" Click="btnAddPlayer_Click"/>
+            </DockPanel>
+            <Button x:Name="btnStartGame" Grid.Column="1" Content="Start Game" Background="#FF48C3A9" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" FontWeight="Bold" Click="btnStartGame_Click"/>
+        </Grid>
+
+    </Grid>
+</Window>
